@@ -8,6 +8,7 @@ Created on Tue Sep 30 21:51:17 2014
 import datetime
 import urllib2
 import os
+import tkMessageBox
 
 class IpRetriever:
     url = r'http://www.binaryworld.webspace.virginmedia.com/Content/tools/ipcheck.php'        
@@ -36,7 +37,9 @@ class IpRetriever:
                     d1 = datetime.datetime.strptime(lines[1][:-2], "%d-%m-%Y")
                     d2 = datetime.datetime.strptime(date, "%d-%m-%Y")
                     ipCount = (d2-d1).days
-                # else new IP address
+                else:
+                    # New IP address - count is 0
+                    tkMessageBox.showinfo(title="Ip Change", message="IP Address changed\nNew IP: " + self.response)
                     
         self.__writeToFile(date, ipCount, mode)
         
