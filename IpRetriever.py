@@ -43,7 +43,6 @@ class IpRetriever:
                     
         self.__writeToFile(date, ipCount, mode)
         
-    
     def GetIp(self):
         return self.response
         
