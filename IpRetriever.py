@@ -15,7 +15,7 @@ import tkMessageBox
 class IpRetriever:
     url = r'http://www.binaryworld.webspace.virginmedia.com/Content/tools/ipcheck.php'        
     response = ''
-    filePath = 'ipAddress.txt'
+    filePath = r'/path/to/file/ipAddress.txt
     
     def __init__(self):
         request = urllib2.urlopen(self.url)
@@ -36,9 +36,12 @@ class IpRetriever:
                 
                 if lines[0][:-2] == str(self.response):
                     # IP address hasn't changed
-                    d1 = datetime.datetime.strptime(lines[1][:-2], "%d-%m-%Y")
-                    d2 = datetime.datetime.strptime(date, "%d-%m-%Y")
-                    ipCount = (d2-d1).days
+                    dateFromFile = datetime.datetime.strptime(lines[1][:-2], "%d-%m-%Y")
+                    currentDate = datetime.datetime.strptime(date, "%d-%m-%Y")
+                    ipCount = (currentDate-dateFromFile).days
+                    
+                    # last recorded IP change date
+                    date = lines[1][:-2]
                 else:
                     # New IP address - count is 0
                     tkMessageBox.showinfo(title="Ip Change", message="IP Address changed\nNew IP: " + self.response)

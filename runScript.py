@@ -13,7 +13,6 @@ def main():
     ipRetriever = IpRetriever()
     
     ipRetriever.CheckIp()
-    print ipRetriever.GetIp()
     
 if __name__ == "__main__":
     main()
