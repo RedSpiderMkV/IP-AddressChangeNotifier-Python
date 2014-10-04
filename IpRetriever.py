@@ -15,7 +15,7 @@ import tkMessageBox
 class IpRetriever:
     url = r'http://www.binaryworld.webspace.virginmedia.com/Content/tools/ipcheck.php'        
     response = ''
-    filePath = r'/path/to/file/ipAddress.txt
+    filePath = r'/path/to/file/ipAddress.txt'
     
     def __init__(self):
         request = urllib2.urlopen(self.url)
