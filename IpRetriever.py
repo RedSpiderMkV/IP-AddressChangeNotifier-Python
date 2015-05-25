@@ -11,15 +11,16 @@ import datetime
 import urllib2
 import os
 import tkMessageBox
+import json
 
 class IpRetriever:
-    url = r'http://www.binaryworld.webspace.virginmedia.com/Content/tools/ipcheck.php'        
+    url = r'http://www.www.portvisibility.co.uk/visibility/tools/myip.php'        
     response = ''
     filePath = r'/path/to/file/ipAddress.txt'
     
     def __init__(self):
         request = urllib2.urlopen(self.url)
-        self.response = request.read()
+        self.response = json.loads(request.read())['host'] # url returns json
         request.close()
         
     def CheckIp(self):
