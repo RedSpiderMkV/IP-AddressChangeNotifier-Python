@@ -8,7 +8,6 @@ long its been since the last IP address change.
 
 Useful for those on a dynamic IP address.
 
-
 In Linux, use crontab to have it run periodically.
 In Windows, use scheduler or place in startup folder to run
 on startup.
