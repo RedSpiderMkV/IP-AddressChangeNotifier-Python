@@ -7,7 +7,7 @@ Created on Tue Sep 30 21:38:14 2014
 @author: RedSpiderMkV
 """
 
-from IpRetriever import IpRetriever
+from IpRetrieverLib import IpRetriever
 
 def main():
     ipRetriever = IpRetriever(r'../')
