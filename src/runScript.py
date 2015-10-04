@@ -10,7 +10,7 @@ Created on Tue Sep 30 21:38:14 2014
 from IpRetriever import IpRetriever
 
 def main():
-    ipRetriever = IpRetriever()
+    ipRetriever = IpRetriever(r'../')
     
     ipRetriever.CheckIp()
     

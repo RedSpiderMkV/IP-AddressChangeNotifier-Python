@@ -14,19 +14,20 @@ import tkMessageBox
 import json
 
 class IpRetriever:
-    url = r'http://www.www.portvisibility.co.uk/visibility/tools/myip.php'        
+    url = r'http://www.portvisibility.co.uk/visibility/tools/myip.php'        
     response = ''
     filePath = r'/path/to/file/ipAddress.txt'
     
-    def __init__(self):
+    def __init__(self, filePath):
         request = urllib2.urlopen(self.url)
         self.response = json.loads(request.read())['host'] # url returns json
+        self.filePath = filePath + '/ipAddress.txt'
         request.close()
         
     def CheckIp(self):
         date = self.__getDate()
         ipCount = 0
-        mode = ''        
+        mode = ''
         
         if not os.path.isfile(self.filePath):
             mode = 'w+'
