@@ -17,7 +17,6 @@ class IpRetriever:
     url = r'http://www.portvisibility.co.uk/visibility/tools/myip.php'
     response = ''
     filePath = r'/path/to/file/ipAddress.txt'
-    newIp = ''
 
     def __init__(self, filePath):
         request = urllib2.urlopen(self.url)
@@ -49,8 +48,7 @@ class IpRetriever:
                 else:
                     # New IP address - count is 0
                     addressChanged = True
-                    self.newIp = self.response
-
+                    self.NewIp = self.response
 
         self.__writeToFile(date, ipCount, mode)
 

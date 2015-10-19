@@ -19,9 +19,9 @@ def main():
 
     if ipRetriever.IpAddressChanged():
         mailer = SendGMail(gmailUserName, gmailPassword, recipient)
-        mailer.Send()
+        mailer.Send(ipRetriever.NewIp)
 
-        tkMessageBox.showinfo(title="Ip Change", message="IP Address changed\nNew IP: " + self.response)
+        tkMessageBox.showinfo(title="Ip Change", message="IP Address changed\nNew IP: " + ipRetriever.NewIp)
 
 if __name__ == "__main__":
     main()
