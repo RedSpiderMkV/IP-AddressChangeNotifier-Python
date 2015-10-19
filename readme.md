@@ -9,6 +9,11 @@ long its been since the last IP address change.
 
 Useful for those on a dynamic IP address.
 
+Send an email to a recipient address using a gmail account when address has changed.
+
+Usage
+==========================================================
+
 In Linux, use crontab to have it run periodically.
 In Windows, use scheduler or place in startup folder to run
 on startup.
