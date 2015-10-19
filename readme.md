@@ -1,5 +1,5 @@
 IP-AddressChangeNotifier-Python
----------------------------------------------------------
+==========================================================
 
 Similar to the other IP Address change notifier but written
 in Python and cross platform (Linux, Windows)
@@ -12,7 +12,7 @@ Useful for those on a dynamic IP address.
 Send an email to a recipient address using a gmail account when address has changed.
 
 Usage
-==========================================================
+---------------------------------------------------------
 
 In Linux, use crontab to have it run periodically.
 In Windows, use scheduler or place in startup folder to run
