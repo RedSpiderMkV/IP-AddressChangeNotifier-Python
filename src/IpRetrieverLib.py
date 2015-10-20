@@ -10,7 +10,6 @@ Created on Tue Sep 30 21:51:17 2014
 import datetime
 import urllib2
 import os
-import tkMessageBox
 import json
 
 class IpRetriever:
