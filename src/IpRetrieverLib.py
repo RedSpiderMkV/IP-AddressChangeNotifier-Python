@@ -13,7 +13,7 @@ import os
 import json
 
 class IpRetriever:
-    url = r'http://www.portvisibility.co.uk/visibility/tools/myip.php'
+    url = r'http://www.portvisibility.co.uk/visibility/tools/myip.php?format=json'
     response = ''
     filePath = r'/path/to/file/ipAddress.txt'
 
