@@ -9,7 +9,7 @@ long its been since the last IP address change.
 
 Useful for those on a dynamic IP address.
 
-Send an email to a recipient address using a gmail account when address has changed.
+Sends an email to a recipient address using a gmail account when address has changed.
 
 Usage
 ---------------------------------------------------------
