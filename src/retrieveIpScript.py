@@ -9,7 +9,7 @@ Created on Tue Sep 30 21:38:14 2014
 
 import tkMessageBox
 from IpRetrieverLib import IpRetriever
-from SendMail import SendMail
+from SendMail import SendGMail
 
 gmailUserName = "someone@gmail.com"
 gmailPassword = "password"

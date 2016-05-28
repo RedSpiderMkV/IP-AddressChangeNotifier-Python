@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:        SendMail
+# Purpose:     Send an email using SMTP
 #
 # Author:      RedSpiderMkV
 #
@@ -9,6 +9,7 @@
 # Licence:     ..
 #-------------------------------------------------------------------------------
 
+import email
 import smtplib
 
 class SendGMail:
@@ -18,20 +19,17 @@ class SendGMail:
         self.gmailPassword = password
 
     def Send(self, newIp):
-        headers = "\r\n".join(["from: " + self.gmailUserName,
-                       "subject: " + "Ip Address Changed",
-                       "to: " + self.recipient,
-                       "mime-version: 1.0",
-                       "content-type: text/html"])
-
-        body_of_email = "New IP: " + newIp
-        content = headers + "\r\n\r\n" + body_of_email
+        msg = email.message_from_string('New IP: ' + newIp)
+        msg['From'] = self.gmailUserName
+        msg['To'] = self.recipient
+        msg['Subject'] = 'IP Address Changed'
 
         try:
             session = smtplib.SMTP('smtp.gmail.com', 587)
             session.ehlo()
             session.starttls()
             session.login(self.gmailUserName, self.gmailPassword)
-            session.sendmail(self.gmailUserName, self.recipient, content)
+            session.sendmail(self.gmailUserName, self.recipient, msg.as_string())
+            session.quit()
         except Exception, e:
             print(e)
