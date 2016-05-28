@@ -9,6 +9,10 @@
 # Copyright:   (c) RedSpiderMkV 2016
 #-------------------------------------------------------------------------------
 
+
 class SmtpProviders:
+    """ SMTP servers for common email providers"""
+    
     GMAIL = 'smtp.gmail.com'
     OUTLOOK = 'smtp.live.com'
+    YAHOO = 'smtp.mail.yahoo.com'
