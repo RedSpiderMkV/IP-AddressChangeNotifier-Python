@@ -17,3 +17,5 @@ Usage
 In Linux, use crontab to have it run periodically.
 In Windows, use scheduler or place in startup folder to run
 on startup.
+
+* Broken... check back in a few days
