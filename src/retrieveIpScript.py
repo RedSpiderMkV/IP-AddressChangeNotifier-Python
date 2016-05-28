@@ -12,8 +12,8 @@
 
 import tkMessageBox
 from IpRetrieverLib import IpRetriever
-from SendMail import SendMail
-from SmtpProviders import SmtpProviders
+from Mailer.SendMail import SendMail
+from Mailer.SmtpProviders import SmtpProviders
 
 gmailUserName = "someone@gmail.com"
 gmailPassword = "password"
