@@ -13,14 +13,22 @@
 import urllib2
 
 class IpRetriever:
+    """ IP Retriever class - retrieves external IP address.  Uses a list
+        of URLs from an external file to query IP address."""
+    
     __urls = []
     
     def __init__(self):
+        """ Initialise retriever with list of URLs which can be checked """        
+        
         with open('IpRetrievalUrlList.txt') as f:
             for line in f:
                 self.__urls.append(line)
         
     def GetIpAddress(self):
+        """ Get IP address - return the value retrieved from the first URL
+            where the query succeeds. """
+            
         for i in range(0, len(self.__urls) - 1):
             try:
                 request = urllib2.urlopen(self.__urls[1])
