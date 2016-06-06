@@ -13,11 +13,12 @@
 import urllib2
 
 class IpRetriever:
-    __urls = [r'http://www.portvisibility.co.uk/visibility/tools/myip.php',
-              r'http://icanhazip.com/',
-              r'http://ipinfo.io/ip',
-              r'https://www.trackip.net/ip',
-              r'https://wtfismyip.com/text']
+    __urls = []
+    
+    def __init__(self):
+        with open('IpRetrievalUrlList.txt') as f:
+            for line in f:
+                self.__urls.append(line)
         
     def GetIpAddress(self):
         for i in range(0, len(self.__urls) - 1):
@@ -28,6 +29,8 @@ class IpRetriever:
                 return ip
             except:
                 print 'Error retrieving Ip from url: ' + self.__urls[i]
+            finally:
+                request.close()
 
 ipRetriever = IpRetriever()
 print ipRetriever.GetIpAddress()
