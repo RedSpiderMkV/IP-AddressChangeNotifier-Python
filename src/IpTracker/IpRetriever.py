@@ -22,10 +22,10 @@ class IpRetriever:
     def __init__(self):
         """ Initialise retriever with list of URLs which can be checked """        
 
-        __location__ = os.path.realpath(
+        location = os.path.realpath(
             os.path.join(os.getcwd(),os.path.dirname(__file__)))        
         
-        with open(os.path.join(__location__, 'IpRetrievalUrlList.txt')) as f:
+        with open(os.path.join(location, 'IpRetrievalUrlList.txt')) as f:
             for line in f:
                 self.__urls.append(line)
         
