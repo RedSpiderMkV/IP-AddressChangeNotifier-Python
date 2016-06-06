@@ -67,7 +67,6 @@ class IpRetriever:
             f.write(str(currentIpCount) + ' days' + '\r\n')
         f.close()
 
-
     def __getDate(self):
         now = datetime.datetime.now()
         date = str.format('{0}-{1}-{2}', now.day, now.month, now.year)
