@@ -35,7 +35,7 @@ class IpRetriever:
             
         for i in range(0, len(self.__urls) - 1):
             try:
-                request = urllib2.urlopen(self.__urls[1])
+                request = urllib2.urlopen(self.__urls[i])
                 ip = request.read().rstrip('\n')
             
                 return ip
