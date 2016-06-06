@@ -10,6 +10,7 @@
 # Copyright:   (c) RedSpiderMkV 2016
 #-------------------------------------------------------------------------------
 
+import os
 import urllib2
 
 class IpRetriever:
@@ -20,8 +21,11 @@ class IpRetriever:
     
     def __init__(self):
         """ Initialise retriever with list of URLs which can be checked """        
+
+        __location__ = os.path.realpath(
+            os.path.join(os.getcwd(),os.path.dirname(__file__)))        
         
-        with open('IpRetrievalUrlList.txt') as f:
+        with open(os.path.join(__location__, 'IpRetrievalUrlList.txt')) as f:
             for line in f:
                 self.__urls.append(line)
         
@@ -39,6 +43,4 @@ class IpRetriever:
                 print 'Error retrieving Ip from url: ' + self.__urls[i]
             finally:
                 request.close()
-
-ipRetriever = IpRetriever()
-print ipRetriever.GetIpAddress()
+                
