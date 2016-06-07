@@ -17,7 +17,7 @@ class IpRetriever:
     """ IP Retriever class - retrieves external IP address.  Uses a list
         of URLs from an external file to query IP address."""
     
-    __urls = []
+    _urls = []
     
     def __init__(self):
         """ Initialise retriever with list of URLs which can be checked """        
@@ -27,7 +27,7 @@ class IpRetriever:
         
         with open(os.path.join(location, 'IpRetrievalUrlList.txt')) as f:
             for line in f:
-                self.__urls.append(line)
+                self._urls.append(line)
         
     def GetIpAddress(self):
         """ Get IP address - return the value retrieved from the first URL
@@ -37,14 +37,14 @@ class IpRetriever:
                 IP address as a string if retrieval successful.  Otherwise,
                 returns None. """
             
-        for i in range(0, len(self.__urls) - 1):
+        for i in range(0, len(self._urls) - 1):
             try:
-                request = urllib2.urlopen(self.__urls[i])
+                request = urllib2.urlopen(self._urls[i])
                 ip = request.read().rstrip('\n')
             
                 return ip
             except:
-                print 'Error retrieving Ip from url: ' + self.__urls[i]
+                print 'Error retrieving Ip from url: ' + self._urls[i]
             finally:
                 request.close()
                 
