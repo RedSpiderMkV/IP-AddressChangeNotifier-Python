@@ -16,8 +16,10 @@ import time
 class IpFileHandler:
     """ IP file handler - handles the reading and writing of the IP address
         to a text file.  When writing to file, also adds a timestamp. """
-        
+
+    """ DateTime format used in date/string conversion. """
     DateTimeFormat = '%d/%m/%Y %H:%M:%S'
+
     _fileName = ''
     
     _INDEX_IP = 0
