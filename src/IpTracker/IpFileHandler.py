@@ -14,6 +14,7 @@ import os
 import time
 
 class IpFileHandler:
+    DateTimeFormat = '%d/%m/%Y %H:%M:%S'
     _fileName = ''
     
     _INDEX_IP = 0
@@ -29,10 +30,13 @@ class IpFileHandler:
         return self._getIpInfoFromFile(self._INDEX_IP).rstrip('\n')
     
     def GetIpUpdateDateFromFile(self):
-        return self._getIpInfoFromFile(self._INDEX_DATE).rstrip('\n')
+        dateTimeStr = self._getIpInfoFromFile(self._INDEX_DATE).rstrip('\n')
+        timestamp = time.strptime(dateTimeStr, self.DateTimeFormat)
+        
+        return timestamp
 
     def SaveIpInfo(self, ipAddress):
-        timestamp = time.strftime('%d/%m/%Y %H:%M:%S')
+        timestamp = time.strftime(self.DateTimeFormat)
         with open(self._fileName, 'w') as f:
             f.write(ipAddress)
             f.write('\n')
@@ -43,3 +47,8 @@ class IpFileHandler:
             lines = f.readlines()
         
             return lines[infoIndex]
+
+fileHandler = IpFileHandler()
+fileHandler.SaveIpInfo('192.168.2.2')
+print fileHandler.GetIpAddressFromFile()
+print time.strftime(fileHandler.DateTimeFormat, fileHandler.GetIpUpdateDateFromFile())
