@@ -31,7 +31,11 @@ class IpRetriever:
         
     def GetIpAddress(self):
         """ Get IP address - return the value retrieved from the first URL
-            where the query succeeds. """
+            where the query succeeds.
+            
+            Returns:
+                IP address as a string if retrieval successful.  Otherwise,
+                returns None. """
             
         for i in range(0, len(self.__urls) - 1):
             try:
@@ -44,3 +48,4 @@ class IpRetriever:
             finally:
                 request.close()
                 
+        return None
