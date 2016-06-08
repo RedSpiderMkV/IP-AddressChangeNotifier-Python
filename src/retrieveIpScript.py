@@ -29,10 +29,10 @@ def main():
     
     ipComparator = IpComparator(fileHandler, ipRetriever)
     if ipComparator.IsIpAddressDifferent():
-        print 'ip is different'
+        print 'IP address is different'
         fileHandler.SaveIpInfo(ipComparator.GetNewIpAddress())
     else:
-        print 'No change in IP Address'
+        print 'No change in IP address'
 
 #    ipAddress = ipRetriever.GetIpAddress()
 #    print 'Retrieved IP Address: ', ipAddress
