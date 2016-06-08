@@ -45,9 +45,14 @@ class IpFileHandler:
         """ Get the time stamp of when IP address was saved.
         
             Returns:
-                IP address saved timestamp as datetime. """
+                IP address saved timestamp as datetime.
+                Returns None if information is invalid or doesn't exist. """
                 
         dateTimeStr = self._getIpInfoFromFile(self._INDEX_DATE).rstrip('\n')
+
+        if dateTimeStr == '':
+            return None
+        
         timestamp = time.strptime(dateTimeStr, self.DateTimeFormat)
         
         return timestamp
@@ -74,9 +79,13 @@ class IpFileHandler:
                            _INDEX_DATE - get timestamp.
             
             Returns:
-                IP Info, either IP address or datetime as a string. """
+                IP Info, either IP address or datetime as a string.
+                Returns empty string if information doesn't exist. """
                 
-        with open(self._fileName) as f:
+        if not os.path.exists(self._fileName):
+            return ''
+            
+        with open(self._fileName, 'r') as f:
             lines = f.readlines()
         
             return lines[infoIndex]

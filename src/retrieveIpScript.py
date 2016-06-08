@@ -17,6 +17,7 @@ from Mailer.SendMail import SendMail
 from Mailer.SmtpProviders import SmtpProviders
 from IpTracker.IpRetriever import IpRetriever
 from IpTracker.IpFileHandler import IpFileHandler
+from IpTracker.IpComparator import IpComparator
 
 gmailUserName = "someone@gmail.com"
 gmailPassword = "password"
@@ -24,14 +25,25 @@ recipient = "recipient@somewhere.com"
 
 def main():
     ipRetriever = IpRetriever()
-    ipAddress = ipRetriever.GetIpAddress()
-    print 'Retrieved IP Address: ', ipAddress
-    
     fileHandler = IpFileHandler()
-    fileHandler.SaveIpInfo(ipAddress)
-    print 'IP Address In File: ', fileHandler.GetIpAddressFromFile()
-    print 'IP Address Timestamp: ', time.strftime(fileHandler.DateTimeFormat,
-                                      fileHandler.GetIpUpdateDateFromFile())
+    
+    ipComparator = IpComparator(fileHandler, ipRetriever)
+    if ipComparator.IsIpAddressDifferent():
+        print 'ip is different'
+
+#    ipAddress = ipRetriever.GetIpAddress()
+#    print 'Retrieved IP Address: ', ipAddress
+#    
+#    fileHandler = IpFileHandler()
+#    #fileHandler.SaveIpInfo(ipAddress)
+#    print 'IP Address In File: ', fileHandler.GetIpAddressFromFile()
+#    
+#    timestamp = fileHandler.GetIpUpdateDateFromFile()
+#    if timestamp == None:
+#        print 'No timestamp'
+#    else:
+#        print 'IP Address Timestamp: ', time.strftime(
+#                                        fileHandler.DateTimeFormat, timestamp)
 
     #if ipRetriever.IpAddressChanged():
     #    mailer = SendMail(gmailUserName, gmailPassword, recipient, SmtpProviders.GMAIL)
