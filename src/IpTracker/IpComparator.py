@@ -10,12 +10,18 @@
 #-------------------------------------------------------------------------------
 
 class IpComparator:
+    _retrievedIpAddress = ''
+    _savedIpAddress = ''
+    
     def __init__(self, fileHandler, ipRetriever):
-        self._fileHandler = fileHandler
-        self._ipRetriever = ipRetriever
+        self._savedIpAddress = fileHandler.GetIpAddressFromFile()
+        self._retrievedIpAddress = ipRetriever.GetIpAddress()
         
     def IsIpAddressDifferent(self):
-        self.SavedIp = self._fileHandler.GetIpAddressFromFile()
-        self.RetrievedIpAddress = self._ipRetriever.GetIpAddress()
-
-        return self.SavedIp != self.RetrievedIpAddress
+        return self._savedIpAddress != self._retrievedIpAddress
+        
+    def GetNewIpAddress(self):
+        return self._retrievedIpAddress
+        
+    def GetExistingIpAddress(self):
+        return self._savedIpAddress
