@@ -10,7 +10,7 @@
 #-------------------------------------------------------------------------------
 
 from Mailer.SendMail import SendMail
-from Mailer.SmtpProviders import SmtpProviders
+from Mailer.SmtpProviderFactory import SmtpProviderFactory
 from IpTracker.IpRetriever import IpRetriever
 from IpTracker.IpFileHandler import IpFileHandler
 from IpTracker.IpComparator import IpComparator
@@ -18,7 +18,7 @@ from IpTracker.IpComparator import IpComparator
 userName = "test"
 password = "password"
 recipient = "recpt"
-provider = SmtpProviders.OUTLOOK
+provider = SmtpProviderFactory.GetProvider(userName)
 
 def main():
     ipRetriever = IpRetriever()

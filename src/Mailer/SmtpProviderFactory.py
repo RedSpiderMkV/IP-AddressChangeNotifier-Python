@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #-------------------------------------------------------------------------------
-# Name:        
-# Purpose:
+# Name:        SmtpProviderFactory
+# Purpose:     Retrieve the SMTP provider for the email address entered.
 #
 # Author:      RedSpiderMkV
 #
@@ -12,8 +12,20 @@
 from SmtpProviders import SmtpProviders
 
 class SmtpProviderFactory:
+    ''' SmtpProviderFactory - retrieve the SMTP provider for a specified
+        email address. '''
+        
     @classmethod
     def GetProvider(self, userAccount):
+        ''' Get SMTP provider for the specified email address.
+
+            Args:
+                userAccount - email address as a string.
+                
+            Returns:
+                SmtpProvider - SMTP provider for email address.
+                If email address is invalid or not supported, returns None. '''
+        
         emailProvider = None
         
         try:
