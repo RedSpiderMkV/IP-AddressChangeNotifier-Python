@@ -18,5 +18,4 @@ In Linux, use crontab to have it run periodically.
 In Windows, use scheduler or place in startup folder to run
 on startup.
 
-* Broken... check back in a few days - probably by June 5th, 2016
-* Still broken... rewriting much of it, check back in a few days, probably June 10th, 2016
+* Usage outdated.. needs updating for re-written version
