@@ -10,17 +10,18 @@
 # Licence:     ..
 #-------------------------------------------------------------------------------
 
+import sys
 from IpTracker.IpRetriever import IpRetriever
 from IpTracker.IpFileHandler import IpFileHandler
 from IpTracker.IpComparator import IpComparator
 from IpUpdateRunner import IpUpdateRunner
 
-userName = "sender"
-password = "password"
-recipient = "recipient"
-
 def main():
     try:
+        userName = sys.argv[1]
+        password = sys.argv[2]
+        recipient = sys.argv[3]
+        
         fileHandler = IpFileHandler()
         ipRetriever = IpRetriever()
         ipComparator = IpComparator(fileHandler, ipRetriever)
