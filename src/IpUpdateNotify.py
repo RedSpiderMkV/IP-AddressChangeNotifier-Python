@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
-# Name:        retrieveIpScript
-# Purpose:     Send an email using SMTP
+# Name:        IpUpdateNotify.py
+# Purpose:     Check, update and notify of any IP address changes.
 #
 # Author:      RedSpiderMkV
 #
@@ -9,45 +9,25 @@
 # Licence:     ..
 #-------------------------------------------------------------------------------
 
-from Mailer.SendMail import SendMail
-from Mailer.SmtpProviderFactory import SmtpProviderFactory
 from IpTracker.IpRetriever import IpRetriever
 from IpTracker.IpFileHandler import IpFileHandler
 from IpTracker.IpComparator import IpComparator
+from IpUpdateRunner import IpUpdateRunner
 
 userName = "sender"
 password = "password"
 recipient = "recipient"
 
-def main():
+def main():    
     try:
-        PerformIpCheckAndUpdate()
+        fileHandler = IpFileHandler()
+        ipRetriever = IpRetriever()
+        ipComparator = IpComparator(fileHandler, ipRetriever)
+        
+        updateRunner = IpUpdateRunner(fileHandler, ipComparator)
+        updateRunner.PerformIpCheckAndUpdate(userName, password, recipient)
     except:
-        print 'Error inIP update'
-    
-def PerformIpCheckAndUpdate():
-    ipRetriever = IpRetriever()
-    fileHandler = IpFileHandler()
-
-    ipComparator = IpComparator(fileHandler, ipRetriever)
-    if ipComparator.IsIpAddressDifferent():
-        print 'IP address is different'
-
-        provider = SmtpProviderFactory.GetProvider(userName)
-        
-        if provider == None:
-            print 'Error getting email provider'
-            return
-
-        mailer = SendMail(userName, password, recipient, provider)
-        subject = 'IP Address Changed'
-        message = 'New IP: ' + ipComparator.GetNewIpAddress()
-        
-        mailer.Send(subject, message)
-        
-        fileHandler.SaveIpInfo(ipComparator.GetNewIpAddress())
-    else:
-        print 'No change in IP address'
+        print 'Error in IP update'
 
 if __name__ == "__main__":
     main()
