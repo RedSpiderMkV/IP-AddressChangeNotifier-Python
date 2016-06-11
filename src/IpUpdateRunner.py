@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #-------------------------------------------------------------------------------
-# Name:        
-# Purpose:
+# Name:        IpUpdateRunner.py
+# Purpose:     Run the IP address update and notify process.
 #
 # Author:      RedSpiderMkV
 #

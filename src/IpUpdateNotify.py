@@ -18,7 +18,7 @@ userName = "sender"
 password = "password"
 recipient = "recipient"
 
-def main():    
+def main():
     try:
         fileHandler = IpFileHandler()
         ipRetriever = IpRetriever()
