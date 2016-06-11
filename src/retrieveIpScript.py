@@ -15,21 +15,23 @@ from IpTracker.IpRetriever import IpRetriever
 from IpTracker.IpFileHandler import IpFileHandler
 from IpTracker.IpComparator import IpComparator
 
-gmailUserName = "someone@gmail.com"
-gmailPassword = "password"
-recipient = "recipient@somewhere.com"
+userName = "test"
+password = "password"
+recipient = "recpt"
 provider = SmtpProviders.OUTLOOK
 
 def main():
     ipRetriever = IpRetriever()
     fileHandler = IpFileHandler()
+
+    fileHandler.SaveIpInfo('192.168.2.2')    
     
     ipComparator = IpComparator(fileHandler, ipRetriever)
     if ipComparator.IsIpAddressDifferent():
         print 'IP address is different'
         fileHandler.SaveIpInfo(ipComparator.GetNewIpAddress())
 
-        mailer = SendMail(gmailUserName, gmailPassword, recipient, provider)
+        mailer = SendMail(userName, password, recipient, provider)
         mailer.Send(ipComparator.GetNewIpAddress())        
     else:
         print 'No change in IP address'
