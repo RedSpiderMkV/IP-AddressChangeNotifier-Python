@@ -23,7 +23,7 @@ def main():
     try:
         PerformIpCheckAndUpdate()
     except:
-        print 'Error in IP update'
+        print 'Error inIP update'
     
 def PerformIpCheckAndUpdate():
     ipRetriever = IpRetriever()
