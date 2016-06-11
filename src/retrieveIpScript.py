@@ -37,7 +37,10 @@ def main():
             return
 
         mailer = SendMail(userName, password, recipient, provider)
-        mailer.Send(ipComparator.GetNewIpAddress())        
+        subject = 'IP Address Changed'
+        message = 'New IP: ' + ipComparator.GetNewIpAddress()
+        
+        mailer.Send(subject, message)
     else:
         print 'No change in IP address'
 

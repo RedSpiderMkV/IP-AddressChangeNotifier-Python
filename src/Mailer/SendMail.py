@@ -19,11 +19,11 @@ class SendMail:
         self.gmailPassword = password
         self.__smtpProvider = provider
 
-    def Send(self, newIp):
-        msg = email.message_from_string('New IP: ' + newIp)
+    def Send(self, subject, message):
+        msg = email.message_from_string(message)
         msg['From'] = self.gmailUserName
         msg['To'] = self.recipient
-        msg['Subject'] = 'IP Address Changed'
+        msg['Subject'] = subject
 
         try:
             session = smtplib.SMTP(self.__smtpProvider, 587)
