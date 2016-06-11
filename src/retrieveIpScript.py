@@ -15,10 +15,9 @@ from IpTracker.IpRetriever import IpRetriever
 from IpTracker.IpFileHandler import IpFileHandler
 from IpTracker.IpComparator import IpComparator
 
-userName = "test"
+userName = "sender"
 password = "password"
-recipient = "recpt"
-provider = SmtpProviderFactory.GetProvider(userName)
+recipient = "recipient"
 
 def main():
     ipRetriever = IpRetriever()
@@ -30,6 +29,12 @@ def main():
     if ipComparator.IsIpAddressDifferent():
         print 'IP address is different'
         fileHandler.SaveIpInfo(ipComparator.GetNewIpAddress())
+
+        provider = SmtpProviderFactory.GetProvider(userName)
+        
+        if provider == None:
+            print 'Error getting email provider'
+            return
 
         mailer = SendMail(userName, password, recipient, provider)
         mailer.Send(ipComparator.GetNewIpAddress())        
