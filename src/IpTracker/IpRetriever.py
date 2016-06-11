@@ -45,7 +45,12 @@ class IpRetriever:
                 return ip
             except:
                 print 'Error retrieving Ip from url: ' + self._urls[i]
+                raise Exception('IP retrieval error.')
             finally:
-                request.close()
+                try:
+                    request.close()
+                except:
+                    pass
                 
         return None
+

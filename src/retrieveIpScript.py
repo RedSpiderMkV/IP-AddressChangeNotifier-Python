@@ -20,15 +20,18 @@ password = "password"
 recipient = "recipient"
 
 def main():
+    try:
+        PerformIpCheckAndUpdate()
+    except:
+        print 'Error in IP update'
+    
+def PerformIpCheckAndUpdate():
     ipRetriever = IpRetriever()
     fileHandler = IpFileHandler()
 
-    fileHandler.SaveIpInfo('192.168.2.2')    
-    
     ipComparator = IpComparator(fileHandler, ipRetriever)
     if ipComparator.IsIpAddressDifferent():
         print 'IP address is different'
-        fileHandler.SaveIpInfo(ipComparator.GetNewIpAddress())
 
         provider = SmtpProviderFactory.GetProvider(userName)
         
@@ -41,6 +44,8 @@ def main():
         message = 'New IP: ' + ipComparator.GetNewIpAddress()
         
         mailer.Send(subject, message)
+        
+        fileHandler.SaveIpInfo(ipComparator.GetNewIpAddress())
     else:
         print 'No change in IP address'
 

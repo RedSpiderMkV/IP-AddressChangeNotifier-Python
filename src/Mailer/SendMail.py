@@ -50,3 +50,4 @@ class SendMail:
             session.quit()
         except Exception, e:
             print(e)
+            raise Exception('Error sending email')

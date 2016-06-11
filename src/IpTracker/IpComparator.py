@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #-------------------------------------------------------------------------------
-# Name:        
-# Purpose:
+# Name:        IpComparator.py
+# Purpose:     Compare IP address with what is on file.
 #
 # Author:      RedSpiderMkV
 #
