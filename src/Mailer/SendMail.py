@@ -15,22 +15,22 @@ import smtplib
 class SendMail:
     def __init__(self, userName, password, recipient, provider):
         self.recipient = recipient
-        self.gmailUserName = userName
-        self.gmailPassword = password
-        self.__smtpProvider = provider
+        self.userName = userName
+        self.passWord = password
+        self._smtpProvider = provider
 
     def Send(self, subject, message):
         msg = email.message_from_string(message)
-        msg['From'] = self.gmailUserName
+        msg['From'] = self.userName
         msg['To'] = self.recipient
         msg['Subject'] = subject
 
         try:
-            session = smtplib.SMTP(self.__smtpProvider, 587)
+            session = smtplib.SMTP(self._smtpProvider, 587)
             session.ehlo()
             session.starttls()
-            session.login(self.gmailUserName, self.gmailPassword)
-            session.sendmail(self.gmailUserName, self.recipient, msg.as_string())
+            session.login(self.userName, self.passWord)
+            session.sendmail(self.userName, self.recipient, msg.as_string())
             session.quit()
         except Exception, e:
             print(e)
