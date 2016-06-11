@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #-------------------------------------------------------------------------------
 # Name:        IpUpdateNotify.py
 # Purpose:     Check, update and notify of any IP address changes.
