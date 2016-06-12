@@ -23,13 +23,18 @@ def main():
         recipient = sys.argv[3]
         
         fileHandler = IpFileHandler()
+        
+        if len(sys.argv) > 4 and sys.argv[4] == '-force':
+            fileHandler.SaveIpInfo('NoIP')
+        
         ipRetriever = IpRetriever()
         ipComparator = IpComparator(fileHandler, ipRetriever)
         
         updateRunner = IpUpdateRunner(fileHandler, ipComparator)
         updateRunner.PerformIpCheckAndUpdate(userName, password, recipient)
-    except:
+    except Exception, e:
         print 'Error in IP update'
+        print e
 
 if __name__ == "__main__":
     main()
